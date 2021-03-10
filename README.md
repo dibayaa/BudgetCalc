@@ -1,1 +1,3 @@
-# BudgetCalc
+# BudgetCalc\
+
+A calculator that allows a user to input their weekly or monthly pay and their monthly expenses and when they would like to retire. The budget calculator takes this information and tells the user when they are likely projected to retire. If the user would like to retire at a early time it will also calculate how much more they would need to save in order to retire in that shorter time. 
