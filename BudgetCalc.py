@@ -1,10 +1,15 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 
+# HOW TO RUN: PLEASE CHECK README ON HOW TO PROPERLY RUN THIS PROJECT
+# I STARTED THIS OUT IN VSCODE AND TRIED TO MOVE OVER TO JUPYTER BUT
+# HAD PROBLEMS WITH MY MACBOOK CONFIGS SO I JUST FINISHED IT ON COLAB 
+# ON GOOGLE 
 
 #Feature: Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
 #Feature: Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
 #Feature: Visualize data in a graph, chart, or other visual representation of data
+
 
 #author: @Anthony Dibaya
 
