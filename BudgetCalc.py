@@ -1,69 +1,69 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 
+
+#Feature: Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
+#Feature: Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
+#Feature: Visualize data in a graph, chart, or other visual representation of data
+
+#author: @Anthony Dibaya
+
 # read in file
 df = pd.read_csv('cashflow.csv', index_col ='Date', 
 parse_dates = True)
 df.head()
 
-#name = input("what is your name: ")
+# Avg spending per category
+avg_spending_cat = df.groupby('Category').mean().sort_values(by='Amount')
+print(avg_spending_cat)
 
-#monthly salary
-#expenses, create a dictionary for expense categories
+# Sum Expense & Income 
+sum_transactions = df.groupby('Transaction Type').sum().sort_values(by='Amount')
+print(sum_transactions)
 
-#dictionary can be necessary expenses and fun stuff and
-#  you can do calculations with the 'fun stuff'
-#
-# dictionary = {'housing': , 'food': ,'clothing': , 'transportation': , 
-# 'fun stuff': , 'childcare/petcare': , 'cellphone': ,'health insurance': ,
-# 'debt': ,'savings': , 'emergency fund': 
-# }
+# Calculate Savings (sum column "Amount" to add expenses vs income; positive = savings)
+column_name = "Amount"
+calc_savings = df[column_name].sum()
+print(calc_savings)
 
-#use pandas to create dataframe
+fig, ax = plt.subplots()
+avg_spending_cat.plot(kind='barh', ax=ax, figsize= (17,6))
+ax.set_xlabel('Amount', size=20)
+ax.set_ylabel('Category', size=20);
 
+#Organize expenses within categories as "necessary" or "unnecessary" 
+expense_type={
+    'housing':'necessary',
+    'groceries':'necessary',
+    'car_insurance':'necessary',
+    'phone_bill':'necessary',
+    'health_insurance':'necessary',
+    'clothing':'unnecessary',
+    'debt':'necessary',
+    'savings':'necessary',
+    'emergency_fund':'necessary',
+    'night_out':'unnecessary',
+    'gas':'necessary',
+    'snacks':'unnecessary',
+    'netflix':'unnecessary',
+    'stocks':'unnecessary',
+    'gym_membership':'unnecessary',
+    'phone_apps':'unnecessary',
+    'cc_membership':'unnecessary',
+    'charity':'unnecessary'
+}
+df['Expense Type'] = df['Category'].map(expense_type)
+df.head()
 
-#use matplotlib for visualization
+# Calculate Descriptive Statistics for each expense type (NEEDS WORK)
 
-# with open('expenses.txt', 'r') as expenses:
-
-#     size_to_read = 10
-
-#     expenses_contents = expenses.read(size_to_read)
-#     print(expenses_contents,end='')
-
-#     expenses.seek(0)
-    
-#     expenses_contents = expenses.read(size_to_read)
-#     print(expenses_contents)
-    
-
-
-    # while len(expenses_contents) > 0:
-    #     print(expenses_contents,end='*')
-    #     expenses_contents = expenses.read(size_to_read)
-
-
-#     fieldnames = ['housing','food','clothing','transportation','fun_stuff','childcare/petcare',
-# 'cellphone','health_insurance','debt','savings','emergency_fund']
-#     expensewriter = csv.DictWriter(csvfile.fieldnames = fieldnames)
-    
-    # expensewriter.writeheader()
-    
-    # expensewriter.writerow({
-    #     # 'housing': '',
-    #     # 'food': ''
-    # })
-  
-
-#store the above in a dataframe
-#export as a csv so user can save their monthly budget
+df.groupby('Expense Type').describe()
 
 
-#def monthly_pay:
-    #pass
 
 
-#def time_til_retire:
-#    pass
-#time value of money over time..valuation on 
-# investments over time, adjust for salary and expense increase
+
+
+
+
+
